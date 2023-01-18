@@ -8,43 +8,46 @@ using ToDoList.Services;
 namespace ToDoList.Controllers
 {
     [ApiController]
-    //[Authorize]
+    [Authorize]
     public class ToDoListController : ControllerBase
     {
-        private readonly ToDoListDBContext _DbContext;
+        private readonly ILogger<ToDoListController> _logger;    
         private readonly ItoDoListService _toDoListService;
-        public ToDoListController(ToDoListDBContext toDoListDBContext, ItoDoListService toDoListService)
+        public ToDoListController(ILogger<ToDoListController> logger, ItoDoListService toDoListService)
         {
-            _DbContext = toDoListDBContext;
+            _logger = logger;
             _toDoListService = toDoListService;
         }
 
-        [HttpGet("todolist/{id}"), AllowAnonymous]
-        public IActionResult getTaskById(int id)
+        [HttpGet("todolist/{id}")]
+        public ActionResult getTaskById(int id)
         {
             try
             {
-                var result = _toDoListService.getTask(id);
+                _logger.LogInformation("Entering getTaskById controller");
+                var result = _toDoListService.getTaskById(id);
                 return Ok(result);
             }
             catch(Exception e)
             {
-                return BadRequest("Some error occured " + e.Message);
+                return BadRequest(e.Message);
             }
         }
 
 
         [HttpGet("todolist")]
-        public ActionResult getAllTasks()
+        public ActionResult getUserTasks()
         {
             try
             {
-                var result = _toDoListService.getAllTasks();
+                _logger.LogInformation("Entering getUserTasks controller");
+                var userId = Int32.Parse(User?.Identity?.Name);
+                var result = _toDoListService.getUserTasks(userId);
                 return Ok(result);
             }
             catch(Exception e)
             {
-                return BadRequest("Some error occured " + e.Message);
+                return BadRequest(e.Message);
             }
         }
 
@@ -54,41 +57,46 @@ namespace ToDoList.Controllers
         {
             try
             {
-                _toDoListService.createTask(task);
+
+                _logger.LogInformation("Entering create controller");
+                var userId = Int32.Parse(User?.Identity?.Name);
+                _toDoListService.createTask(userId,task);
                 return Ok("Created task succesfully");
             }
             catch(Exception e)
             {
-                return BadRequest("Some error occured " + e.Message);
+                return BadRequest(e.Message);
             }
         }
 
         [HttpPut("todolist")]
-        public  ActionResult updateStatus(int id, Status status)
+        public  ActionResult updateStatus(int id)
         {
             try
             {
-                _toDoListService.updateTask(id,status);
+                _logger.LogInformation("Entering updateStatus controller");
+                _toDoListService.updateTask(id);
                 return Ok("Updated task successfully");
             }
             catch (Exception e)
             {
-                return BadRequest("Some error occured " + e.Message);
+                return BadRequest(e.Message);
             }
         }
 
 
         [HttpDelete("todolist/{id}")]
-        public async Task<ActionResult> deleteTask(int id)
+        public  ActionResult deleteTask(int id)
         {
             try
             {
+                _logger.LogInformation("Entering deleteTask controller");
                 _toDoListService.deleteTask(id);
                 return Ok("Deleted task Successfully");
             }
             catch(Exception e)
             {
-                return BadRequest("Some error occured " + e.Message);
+                return BadRequest(e.Message);
             }
         }
 

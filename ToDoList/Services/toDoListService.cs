@@ -8,81 +8,128 @@ namespace ToDoList.Services
 {
 	public class toDoListService : ItoDoListService
 	{
-
-		private readonly ItoDoListRepository _toDoListRepository;
-        private ToDo toDo;
-		public toDoListService( ItoDoListRepository toDoListRepository)
+        private readonly ILogger<toDoListService> _logger;
+        private readonly ItoDoListRepository _toDoListRepository;
+		public toDoListService(ILogger<toDoListService> logger, ItoDoListRepository toDoListRepository)
 		{
 			_toDoListRepository = toDoListRepository;
-		}
+            _logger = logger;
+        }
 
-		public List<ToDo> getTask(int id)
+		public tasksModel getTaskById(int id)
 		{
             try
             {
-                return _toDoListRepository.getTaskById(id);
+                _logger.LogInformation("Entering getTaskById service");
+                var result  = _toDoListRepository.getTaskById(id);
+                if(result == null)
+                {
+                    throw new Exception("Task doesn't exist");
+                }else if(result.Approval != 1)
+                {
+                    throw new Exception("Task not approved");
+                }
+                var task = new tasksModel();
+                task.Id = result.Id;
+                task.Task = result.Task;
+                task.Status = result.Status;
+                task.Approval = result.Approval;
+                task.UserId = result.UserId;
+                return task;
             }
-            catch(Exception e)
+            catch
             {
-                throw new("Some error occured " + e.Message);
+                throw;
             }
         }
 
-        public List<ToDo> getAllTasks()
+        public List<tasksModel> getUserTasks(int userId)
         {
             try
             {
-                return _toDoListRepository.getAllTasks();
+                _logger.LogInformation("Entering getUserTasks service");
+                var result= _toDoListRepository.getUserTasks(userId);
+                var req_tasks = new List<tasksModel>();
+                result.ForEach(t =>
+                {
+                    var task = new tasksModel();
+                    task.Id = t.Id;
+                    task.Task = t.Task;
+                    task.Status = t.Status;
+                    task.Approval = t.Approval;
+                    task.UserId = t.UserId;
+                    req_tasks.Add(task);
+                });
+                return (req_tasks);
             }
-            catch(Exception e)
+            catch
             {
-                throw new("Some error occured " + e.Message);
+                throw;
             }
         }
 
-		public void createTask(task task)
+		public void createTask(int userId,task task)
 		{
             try
             {
+                _logger.LogInformation("Entering createTask service");
+                var user = _toDoListRepository.getUser(userId);
                 var toDo = new ToDo()
                 {
                     Task = task.Task,
-                    Status = 0
+                    UserId = user.Id,
+              
                 };
                 _toDoListRepository.createTask(toDo);
             }
-            catch (Exception e)
+            catch
             {
-                throw new("Some error occured " + e.Message);
+                throw;
             }
         }
 
-        public void updateTask(int id,Status status)
+        public void updateTask(int id)
         {
             try
             {
-                var toDo = new ToDo()
+                
+                _logger.LogInformation("Entering updateTask service");
+                var result = _toDoListRepository.getTaskById(id);
+                if (result == null)
                 {
-                    Id = id,
-                    Task = "",
-                    Status = status.status
-                };
-                _toDoListRepository.updateTask(id, status);
+                    throw new Exception("Task doesn't exist");
+                }
+                else if (result.Status == 1)
+                {
+                    throw new Exception("Status already updated");
+                }
+                else
+                {
+                    result.Status = 1;
+                    _toDoListRepository.updateTask(result);
+                }
+                _toDoListRepository.updateTask(result);
             }
-            catch (Exception e)
+            catch 
             {
-                throw new("Some error occured " + e.Message);
+                throw;
             }
         }
         public void deleteTask(int id)
         {
             try
             {
-                _toDoListRepository.deleteTask(id);
+                _logger.LogInformation("Entering deleteTask service");
+                var result = _toDoListRepository.getTaskById(id);
+                if (result == null)
+                {
+                    throw new Exception("Task doesn't exist");
+                }
+                _toDoListRepository.deleteTask(result);
             }
-            catch (Exception e)
+            catch
             {
-                throw new("Some error occured " + e.Message);
+                throw;
             }
         }
     }

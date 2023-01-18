@@ -5,11 +5,13 @@ namespace ToDoList.Repositories
 {
 	public interface ItoDoListRepository
 	{
-        public List<ToDo> getTaskById(int id);
+        public ToDo getTaskById(int id);
         public List<ToDo> getAllTasks();
+        public List<ToDo> getUserTasks(int userID);
         public void createTask(ToDo toDo);
-        public void updateTask(int id,Status status);
-        public void deleteTask(int id);
+        public void updateTask(ToDo toDo);
+        public void deleteTask(ToDo toDo);
+        public User getUser(int id);
     }
 }
 

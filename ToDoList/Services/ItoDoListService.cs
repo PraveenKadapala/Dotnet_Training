@@ -5,12 +5,11 @@ namespace ToDoList.Services
 {
 	public interface ItoDoListService
 	{
-        public List<ToDo> getTask(int id);
-        public List<ToDo> getAllTasks();
-        public void createTask(task task);
-        public void updateTask(int id, Status toDo);
+        public tasksModel getTaskById(int id);
+        public List<tasksModel> getUserTasks(int userId);
+        public void createTask(int userId,task task);
+        public void updateTask(int id);
         public void deleteTask(int id);
-
     }
 }
 

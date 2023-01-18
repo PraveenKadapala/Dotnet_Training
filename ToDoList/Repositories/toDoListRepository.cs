@@ -15,31 +15,44 @@ namespace ToDoList.Repositories
             _logger = logger;
 
         }
-        public List<ToDo> getTaskById(int id)
+        public ToDo getTaskById(int id)
         {
             try
             {
-                //var task =  _dbContext.ToDos.FindAsync(id);
-                var task = _dbContext.ToDos.Where(t => t.Id == id).ToList();
-                _logger.LogWarning("Task:", task);
+                _logger.LogInformation("Entering getTaskById repository");
+                var task = _dbContext.ToDos.Where(t => t.Id == id).FirstOrDefault();            
                 return task;
             }
-            catch(Exception e)
+            catch
             {
-                throw new("Some error occured " + e.Message);
+                throw;
             }
         }
 
+        public List<ToDo> getUserTasks(int userID)
+        {
+            try
+            {
+                _logger.LogInformation("Entering getUserTasks repository");
+                var tasks = _dbContext.ToDos.Where(t =>t.UserId == userID && t.Approval ==1).ToList();
+                return tasks;
+            }
+            catch
+            {
+                throw;
+            }
+        }
         public List<ToDo> getAllTasks()
         {
             try
             {
+                _logger.LogInformation("Entering getAllTasks repository");
                 var tasks = _dbContext.ToDos.ToList();
                 return tasks;
             }
-            catch(Exception e)
+            catch
             {
-                throw new("Some error occured " + e.Message);
+                throw;
             }
         }
 
@@ -47,53 +60,56 @@ namespace ToDoList.Repositories
         {
             try
             {
+                _logger.LogInformation("Entering createTask repository");
                 _dbContext.ToDos.Add(toDo);
                 _dbContext.SaveChanges();
             }
-            catch (Exception e)
+            catch
             {
-                throw new("Some error occured " + e.Message);
+                throw;
             }
         }
 
-        public void updateTask(int id, Status status)
+        public void updateTask(ToDo toDo)
         {
             try
             {
-               
-                var result = _dbContext.ToDos.Where(t => t.Id == id).First();
-                if (result == null)
-                {
-                    throw new("Task doesn't exist");
-                }
-                result.Status = status.status;
-                _dbContext.ToDos.Update(result);
+                _logger.LogInformation("Entering updateTask repository");
+                _dbContext.ToDos.Update(toDo);
                 _dbContext.SaveChanges();
             }
-            catch (Exception e)
+            catch
             {
-                throw new("Some error occured " + e.Message);
+                throw;
             }
 
 }
 
-        public void deleteTask(int id)
+        public void deleteTask(ToDo toDo)
         {
             try
             {
-                var result = _dbContext.ToDos.Where(t => t.Id == id).First();
-                if (result == null)
-                {
-                    throw new("Task doesn't exist");
-                }
-                _dbContext.ToDos.Remove(result);
+                _logger.LogInformation("Entering deleteTask repository");
+                _dbContext.ToDos.Remove(toDo);
                 _dbContext.SaveChanges();
             }
-            catch (Exception e)
+            catch 
             {
-                throw new("Some error occured " + e.Message);
+                throw;
             }
 
+        }
+        public User getUser(int id)
+        {
+            try
+            {
+                _logger.LogInformation("Entering getUser repository");
+                return _dbContext.Users.Where(u => u.Id == id).First();
+            }
+            catch
+            {
+                throw;
+            }
         }
     }
 }
