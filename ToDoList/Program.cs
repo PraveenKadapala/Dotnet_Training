@@ -10,6 +10,7 @@ using ToDoList.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System.Configuration;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -40,11 +41,14 @@ builder.Logging.AddSerilog(logger);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<ToDoListDBContext>();
-builder.Services.AddScoped<ItoDoListService, toDoListService>();
-builder.Services.AddScoped<IuserService, userService>();
-builder.Services.AddScoped<IadminService, adminService>();
-builder.Services.AddScoped<ItoDoListRepository, toDoListRepository>();
-builder.Services.AddScoped<IuserRepository, userRepository>();
+builder.Services.AddScoped<IToDoListService, ToDoListService>();
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IAdminService, AdminService>();
+builder.Services.AddScoped<IToDoListRepository, ToDoListRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IAdminRepository, AdminRepository>();
+builder.Services.AddScoped<ServiceBusSenderService>();
+builder.Services.AddScoped<ServiceBusReceiverService>();
 
 
 builder.Services.AddAuthentication(Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(
@@ -66,6 +70,7 @@ builder.Services.AddControllersWithViews()
     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
 );
 
+
 //builder.Host.UseSerilog();
 var app = builder.Build();
 
@@ -85,4 +90,6 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+
 

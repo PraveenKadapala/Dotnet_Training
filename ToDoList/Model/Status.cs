@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-
 namespace ToDoList.Model
 {
-    public partial class Status
+    public class Status
     {
-        public sbyte status { get; set; }
+        public string status { get; set; } = null!;
     }
 }
+

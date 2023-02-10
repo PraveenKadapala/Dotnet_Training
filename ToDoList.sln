@@ -5,6 +5,10 @@ VisualStudioVersion = 25.0.1704.2
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoList", "ToDoList\ToDoList.csproj", "{5F7EB32C-39BA-4E05-82CD-7C494BE8F7DD}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{42A17261-85CF-44E9-BCF1-EFBE16627B97}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoListTest", "..\ToDoListTest\ToDoListTest.csproj", "{4A70A956-27FC-4913-A81D-DEEA4023E242}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{5F7EB32C-39BA-4E05-82CD-7C494BE8F7DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F7EB32C-39BA-4E05-82CD-7C494BE8F7DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F7EB32C-39BA-4E05-82CD-7C494BE8F7DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42A17261-85CF-44E9-BCF1-EFBE16627B97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42A17261-85CF-44E9-BCF1-EFBE16627B97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42A17261-85CF-44E9-BCF1-EFBE16627B97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42A17261-85CF-44E9-BCF1-EFBE16627B97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A70A956-27FC-4913-A81D-DEEA4023E242}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A70A956-27FC-4913-A81D-DEEA4023E242}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A70A956-27FC-4913-A81D-DEEA4023E242}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A70A956-27FC-4913-A81D-DEEA4023E242}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

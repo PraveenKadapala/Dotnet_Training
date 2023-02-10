@@ -1,40 +1,54 @@
-﻿<Properties StartupConfiguration="{5F7EB32C-39BA-4E05-82CD-7C494BE8F7DD}|https">
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+﻿<Properties StartupConfiguration="{42A17261-85CF-44E9-BCF1-EFBE16627B97}|Default">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workbench ActiveDocument="ToDoList/Controllers/ToDoListController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="../ToDoListTest/UnitTest1.cs">
     <Files>
-      <File FileName="ToDoList/Services/toDoListService.cs" Line="14" Column="1" />
-      <File FileName="ToDoList/Repositories/toDoListRepository.cs" Line="14" Column="44" />
-      <File FileName="ToDoList/Controllers/ToDoListController.cs" Line="54" Column="39" />
-      <File FileName="ToDoList/Services/ItoDoListService.cs" Line="13" Column="6" />
-      <File FileName="ToDoList/Repositories/ItoDoListRepository.cs" Line="13" Column="6" />
-      <File FileName="ToDoList/Program.cs" Line="32" Column="65" />
-      <File FileName="ToDoList/Model/User.cs" Line="9" Column="6" />
-      <File FileName="ToDoList/Model/Task.cs" Line="6" Column="36" />
-      <File FileName="ToDoList/Model/Ststus.cs" Line="6" Column="38" />
-      <File FileName="ToDoList/Model/ToDo.cs" Line="9" Column="50" />
+      <File FileName="ToDoList/Controllers/ToDoListController.cs" Line="60" Column="47" IsPinned="True" />
+      <File FileName="../ToDoListTest/UnitTest1.cs" Line="26" Column="1" />
+      <File FileName="ToDoList/Services/ToDoListService.cs" Line="56" Column="46" />
+      <File FileName="ToDoList/Repositories/ToDoListRepository.cs" Line="35" Column="10" />
+      <File FileName="ToDoList/Model/ToDo.cs" Line="1" Column="1" />
+      <File FileName="ToDoList/Model/TasksModel.cs" Line="16" Column="41" />
+      <File FileName="ToDoList/Repositories/UserRepository.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="ToDoList" expanded="True">
+            <Node name="docker-compose" expanded="True" />
             <Node name="ToDoList" expanded="True">
-              <Node name="Controllers" expanded="True">
-                <Node name="ToDoListController.cs" selected="True" />
-              </Node>
+              <Node name="Controllers" expanded="True" />
               <Node name="Model" expanded="True" />
-              <Node name="Properties" expanded="True" />
               <Node name="Repositories" expanded="True" />
               <Node name="Services" expanded="True" />
+              <Node name="Utils" expanded="True" />
+            </Node>
+            <Node name="ToDoListTest" expanded="True">
+              <Node name="Dependencies" expanded="True">
+                <Node name="PackageDependencies" expanded="True" />
+              </Node>
+              <Node name="UnitTest1.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.UnitTesting.TestPad">
+        <State name="__root__">
+          <Node name="ToDoList" expanded="True">
+            <Node name="ToDoListTest" expanded="True">
+              <Node name="ToDoListTest" expanded="True">
+                <Node name="ToDoListControllerTests" expanded="True" />
+              </Node>
             </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.ItemProperties.ToDoList PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.ToDoList PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.docker-compose PreferredExecutionTarget="MonoDevelop.Default" />
 </Properties>

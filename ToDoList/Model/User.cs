@@ -10,11 +10,11 @@ namespace ToDoList.Model
             ToDos = new HashSet<ToDo>();
         }
 
+        public int Id { get; set; }
         public string Username { get; set; } = null!;
         public string Email { get; set; } = null!;
         public string Password { get; set; } = null!;
-        public int Id { get; set; }
-        public sbyte Admin { get; set; }
+        public string Role { get; set; } = null!;
 
         public virtual ICollection<ToDo> ToDos { get; set; }
     }

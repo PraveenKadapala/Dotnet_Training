@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>c058fd02-c78b-476c-a3fd-fce1a6e8a6e5</UserSecretsId>
+    <DockerComposeProjectPath>../docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'https' " />
@@ -33,6 +34,9 @@
     <PackageReference Include="Serilog.Extensions.Logging" Version="3.1.0" />
     <PackageReference Include="Serilog.Sinks.Console" Version="4.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.13" />
+    <PackageReference Include="Azure.Identity" Version="1.8.1" />
+    <PackageReference Include="Azure.Messaging.ServiceBus" Version="7.0.1" />
+    <PackageReference Include="Microsoft.Azure.ServiceBus" Version="5.2.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -53,9 +57,14 @@
     <None Remove="Serilog.Extensions.Logging" />
     <None Remove="Serilog.Sinks.Console" />
     <None Remove="Microsoft.AspNetCore.Mvc.NewtonsoftJson" />
+    <None Remove="Utils\" />
+    <None Remove="Azure.Messaging.ServiceBus" />
+    <None Remove="Azure.Identity" />
+    <None Remove="Microsoft.Azure.ServiceBus" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Services\" />
     <Folder Include="Repositories\" />
+    <Folder Include="Utils\" />
   </ItemGroup>
 </Project>

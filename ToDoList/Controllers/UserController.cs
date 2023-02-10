@@ -1,5 +1,6 @@
 ﻿using System.Security.Claims;
 using System.IdentityModel.Tokens.Jwt;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -13,10 +14,10 @@ namespace ToDoList.Controllers
     {
 
         private readonly ToDoListDBContext _toDoListDBContext;
-        private readonly IuserService _userService;
+        private readonly IUserService _userService;
         private readonly ILogger<ToDoListController> _logger;
 
-        public Usercontroller(ILogger<ToDoListController> logger,ToDoListDBContext toDoListDBContext, IuserService userService)
+        public Usercontroller(ILogger<ToDoListController> logger,ToDoListDBContext toDoListDBContext, IUserService userService)
         {
 
             _toDoListDBContext = toDoListDBContext;
@@ -24,28 +25,13 @@ namespace ToDoList.Controllers
             _logger = logger;
         }
 
-        [HttpPost("addUser")]
-        public ActionResult addUser(userModel user)
-        {
-            try
-            {
-                _logger.LogInformation("Entering addUser controller");
-                _userService.addUser(user);
-                return Ok("Added user succesfully");
-            }
-            catch (Exception e)
-            {
-                return BadRequest(e.Message);
-            }
-        }
-
         [HttpPost("login")]
-        public  ActionResult login(loginRequestModel request)
+        public  ActionResult Login(loginRequestModel request)
         {
             try
             {
                 _logger.LogInformation("Entering login controller");
-                var token = _userService.login(request);
+                var token = _userService.Login(request);
                 return Ok(token);
             }
             catch(Exception e)

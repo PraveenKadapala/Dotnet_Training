@@ -82,3 +82,16 @@
 /Users/praveenkadapala/Projects/ToDoList/ToDoList/obj/Release/net7.0/ToDoList.pdb
 /Users/praveenkadapala/Projects/ToDoList/ToDoList/obj/Release/net7.0/ToDoList.genruntimeconfig.cache
 /Users/praveenkadapala/Projects/ToDoList/ToDoList/obj/Release/net7.0/ref/ToDoList.dll
+/Users/praveenkadapala/Projects/ToDoList/ToDoList/bin/Release/net7.0/Azure.Core.dll
+/Users/praveenkadapala/Projects/ToDoList/ToDoList/bin/Release/net7.0/Azure.Core.Amqp.dll
+/Users/praveenkadapala/Projects/ToDoList/ToDoList/bin/Release/net7.0/Azure.Identity.dll
+/Users/praveenkadapala/Projects/ToDoList/ToDoList/bin/Release/net7.0/Azure.Messaging.ServiceBus.dll
+/Users/praveenkadapala/Projects/ToDoList/ToDoList/bin/Release/net7.0/Microsoft.Azure.Amqp.dll
+/Users/praveenkadapala/Projects/ToDoList/ToDoList/bin/Release/net7.0/Microsoft.Azure.ServiceBus.dll
+/Users/praveenkadapala/Projects/ToDoList/ToDoList/bin/Release/net7.0/Microsoft.Azure.Services.AppAuthentication.dll
+/Users/praveenkadapala/Projects/ToDoList/ToDoList/bin/Release/net7.0/Microsoft.Bcl.AsyncInterfaces.dll
+/Users/praveenkadapala/Projects/ToDoList/ToDoList/bin/Release/net7.0/Microsoft.Identity.Client.dll
+/Users/praveenkadapala/Projects/ToDoList/ToDoList/bin/Release/net7.0/Microsoft.Identity.Client.Extensions.Msal.dll
+/Users/praveenkadapala/Projects/ToDoList/ToDoList/bin/Release/net7.0/Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll
+/Users/praveenkadapala/Projects/ToDoList/ToDoList/bin/Release/net7.0/Microsoft.IdentityModel.Clients.ActiveDirectory.dll
+/Users/praveenkadapala/Projects/ToDoList/ToDoList/bin/Release/net7.0/System.Memory.Data.dll
